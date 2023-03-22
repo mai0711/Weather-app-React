@@ -1,17 +1,16 @@
 import React from 'react'
-import "./Main.css"
+import "./Current.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios'
-// import { backdropClasses } from '@mui/material';
 import Sunny from "../../assets/sunny.jpg"
 import Cloudy from "../../assets/cloud.jpg"
 import Rainy from "../../assets/rain.jpg"
 import Snow from "../../assets/snow.jpg"
 import Image from "../../assets/image.jpg"
-import Thunder from "../../assets/thounder.jpg"
+import Thunder from "../../assets/thunder.jpg"
 
 
-export default function Main() {
+export default function Current() {
     const [weatherData, setWeatherData] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [addInputValue, setAddInputValue] = useState("");

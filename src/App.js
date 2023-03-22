@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Main from './pages/Main/Main';
+import Current from './pages/Current/Current';
 import NavBar from './components/NavBar';
-import HomePage from './pages/HomePage/HomePage';
 import WeeklyWeather from './pages/WeeklyWeather/WeeklyWeather';
 import Footer from './components/Footer';
 
@@ -12,9 +11,8 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path='/' element={<HomePage />} />
         <Route path='/weeklyweather' element={<WeeklyWeather />} />
-        <Route path='/main' element={<Main />} />
+        <Route path='/current' element={<Current />} />
       </Routes>
 
       <Footer />
