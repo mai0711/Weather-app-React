@@ -10,7 +10,6 @@ import Image from "../../assets/image.jpg"
 import Thunder from "../../assets/thunder.jpg"
 import Fog from "../../assets/fog.jpg"
 
-
 export default function Current() {
     const [weatherData, setWeatherData] = useState("");
     const [inputValue, setInputValue] = useState("");
@@ -31,7 +30,6 @@ export default function Current() {
 
     const getWeatherData = async ()=> {
         const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
-    
         setWeatherData({
           name: data.location.name,
           country: data.location.country,
@@ -87,7 +85,7 @@ export default function Current() {
 
     : { backgroundImage: `url(${Image})`}
 }
-  >
+>
       <form className='inputContainer'>
           <input 
           className='input'

@@ -7,7 +7,6 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import {Container} from 'react-bootstrap';
 
 export default function WeeklyWeather() {
-
   const [weeklyWeather, setWeeklyWeather] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [addInputValue, setAddInputValue] = useState("");
@@ -21,12 +20,10 @@ export default function WeeklyWeather() {
 
   const getWeeklyWeatherData = async ()=> {
     const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=7&aqi=no&alerts=no`)
-
     setArrayData(data.forecast.forecastday)
     setRegion("Region :")
     setCountry("Country :")
-
-  setWeeklyWeather({
+    setWeeklyWeather({
     name: data.location.country,
     country: data.location.country,
     region: data.location.region,
@@ -48,15 +45,14 @@ export default function WeeklyWeather() {
           type="text" 
           value={inputValue}
           placeholder='Search for location' 
-          onChange={(e)=> setInputValue(e.target.value)}  />
+          onChange={(e)=> setInputValue(e.target.value)} />
           <button
           className='inputBtn'
           onClick={handleOnChange}>Search</button><br/>
       </form>
-      <br />
       <div className='location'>
-        <h2>{region}{weeklyWeather.region} </h2>
-        <h2>{country}{weeklyWeather.country} </h2>
+        <h2>{region}{weeklyWeather.region}</h2>
+        <h2>{country}{weeklyWeather.country}</h2>
       </div>
 
         {arrayData?.map(result=>{

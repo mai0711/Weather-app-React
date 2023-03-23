@@ -5,7 +5,6 @@ import axios from 'axios';
 import {Container} from 'react-bootstrap';
 
 export default function Hourly() {
-    
     const [hourly, setHourly] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [addInputValue, setAddInputValue] = useState("");
@@ -14,19 +13,16 @@ export default function Hourly() {
     const [region, setRegion] = useState("");
     const [country, setCountry] = useState("");
 
-
     useEffect(()=>{
         getHourlyData();
     },[addInputValue])
     
     const getHourlyData = async ()=> {
         const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
-        
         setHourlyArray(data.forecast.forecastday[0].hour)
         setDate("Date :")
         setRegion("Region :")
         setCountry("Country :")
-        
         setHourly({
             name: data.location.country,
             country: data.location.country,
@@ -50,25 +46,23 @@ export default function Hourly() {
                 type="text" 
                 value={inputValue}
                 placeholder='Search for location' 
-                onChange={(e)=> setInputValue(e.target.value)}  />
+                onChange={(e)=> setInputValue(e.target.value)} />
                 <button
                 className='inputBtn'
                 onClick={handleOnChange}>Search</button>
             </form>
             <div className='location'>
                 <h2>{date}{hourly.date}</h2>
-                <h2>{region}{hourly.region} </h2>
-                <h2>{country}{hourly.country} </h2>
-        </div>
-    <br />
+                <h2>{region}{hourly.region}</h2>
+                <h2>{country}{hourly.country}</h2>
+            </div>
+        <br />
         
-
     {hourlyArray?.map(result=>{
         return(
             <div className='hourlyContainer'>
                 <div className="hourlyHeader">
                     <p>{result.time.slice(11)}</p>
-                    <p></p>
                     <img src={result.condition.icon}
                         alt=""
                         style={{ width: 70, height: 70, backgroundColor: '#cde4ff' }} />

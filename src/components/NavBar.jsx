@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 export default function NavBar() {
   return (
     <div>
-         <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/current">Weather Forecast</Navbar.Brand>
           <Nav className="me-auto">
