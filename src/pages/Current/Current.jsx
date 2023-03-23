@@ -8,12 +8,22 @@ import Rainy from "../../assets/rain.jpg"
 import Snow from "../../assets/snow.jpg"
 import Image from "../../assets/image.jpg"
 import Thunder from "../../assets/thunder.jpg"
+import Fog from "../../assets/fog.jpg"
 
 
 export default function Current() {
     const [weatherData, setWeatherData] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [addInputValue, setAddInputValue] = useState("");
+    const [date, setDate] = useState("");
+    const [location, setLocation] = useState("");
+    const [region, setRegion] = useState("");
+    const [country, setCountry] = useState("");
+    const [current, setCurrent] = useState("");
+    const [condition, setCondition] = useState("");
+    const [high, setHigh] = useState("");
+    const [low, setLow] = useState("");
+    const [celsius, setCelsius] = useState("")
 
     useEffect(()=>{
         getWeatherData();
@@ -32,6 +42,16 @@ export default function Current() {
           condition: data.current.condition.text,
           date: data.forecast.forecastday[0].date,
         });
+
+        setDate("Date : ")
+        setLocation("Location : ")
+        setRegion("Region : ")
+        setCountry("Country : ")
+        setCurrent("Current : ")
+        setCondition("Condition : ")
+        setHigh("High : ")
+        setLow("Low : ")
+        setCelsius("℃")
     };
 
     const handleOnChange = (e)=>{
@@ -59,6 +79,9 @@ export default function Current() {
     : weatherData.condition?.toLowerCase().includes("thunder")
     ? { backgroundImage: `url(${Thunder})`}
 
+    : weatherData.condition?.toLowerCase().includes("fog")
+    ? { backgroundImage: `url(${Fog})`}
+
     : weatherData.condition?.toLowerCase().includes("snow")
     ? { backgroundImage: `url(${Snow})`}
 
@@ -70,7 +93,7 @@ export default function Current() {
           className='input'
           type="text" 
           value={inputValue}
-          placeholder='Search' 
+          placeholder='Search for location' 
           onChange={(e)=> setInputValue(e.target.value)}  />
           <button
           className='inputBtn'
@@ -78,14 +101,14 @@ export default function Current() {
           onClick={handleOnChange}>Search</button><br/>
       </form>
       <div className='search-result'>
-        <h1>Date : {weatherData.date}</h1>
-        <h1>Name : {weatherData.name}</h1>
-        <h1>Region : {weatherData.region} </h1>
-        <h1>Country : {weatherData.country} </h1>
-        <h1>Current : {weatherData.current} °c</h1>
-        <h1> Condition : {weatherData.condition}</h1>
-        <h1> High : {weatherData.high} °c</h1> 
-        <h1> Low : {weatherData.low} °c</h1>  
+        <h1>{date}{weatherData.date}</h1>
+        <h1>{location}{weatherData.name}</h1>
+        <h1>{region}{weatherData.region} </h1>
+        <h1>{country}{weatherData.country} </h1>
+        <h1>{current}{weatherData.current}{celsius}</h1>
+        <h1>{condition}{weatherData.condition}</h1>
+        <h1>{high}{weatherData.high}{celsius}</h1> 
+        <h1>{low}{weatherData.low}{celsius}</h1>  
       </div>
     </div>
     )

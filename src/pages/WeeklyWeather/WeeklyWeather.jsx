@@ -12,6 +12,8 @@ export default function WeeklyWeather() {
   const [inputValue, setInputValue] = useState("");
   const [addInputValue, setAddInputValue] = useState("");
   const [arrayData, setArrayData] = useState([]);
+  const [region, setRegion] = useState("");
+  const [country, setCountry] = useState("");
 
   useEffect(()=>{
     getWeeklyWeatherData();
@@ -21,6 +23,8 @@ export default function WeeklyWeather() {
     const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=7&aqi=no&alerts=no`)
 
     setArrayData(data.forecast.forecastday)
+    setRegion("Region :")
+    setCountry("Country :")
 
   setWeeklyWeather({
     name: data.location.country,
@@ -28,8 +32,6 @@ export default function WeeklyWeather() {
     region: data.location.region,
   });
 }
-
-// console.log(weeklyWeather)
 
   const handleOnChange = (e)=>{
     e.preventDefault()
@@ -39,13 +41,13 @@ export default function WeeklyWeather() {
 
   return (
     <div className='weeklyWeather'>
-      <br />
-      <form className='inputContainer'>
+      <h1>7 Days Forecast</h1>
+      <form className='weeklyInputContainer'>
           <input
           className='input'
           type="text" 
           value={inputValue}
-          placeholder='Search' 
+          placeholder='Search for location' 
           onChange={(e)=> setInputValue(e.target.value)}  />
           <button
           className='inputBtn'
@@ -53,8 +55,8 @@ export default function WeeklyWeather() {
       </form>
       <br />
       <div className='location'>
-        <h2>Region : {weeklyWeather.region} </h2>
-        <h2>Country : {weeklyWeather.country} </h2>
+        <h2>{region}{weeklyWeather.region} </h2>
+        <h2>{country}{weeklyWeather.country} </h2>
       </div>
 
         {arrayData?.map(result=>{

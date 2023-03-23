@@ -10,6 +10,10 @@ export default function Hourly() {
     const [inputValue, setInputValue] = useState("");
     const [addInputValue, setAddInputValue] = useState("");
     const [hourlyArray, setHourlyArray] = useState([]);
+    const [date, setDate] = useState("");
+    const [region, setRegion] = useState("");
+    const [country, setCountry] = useState("");
+
 
     useEffect(()=>{
         getHourlyData();
@@ -19,6 +23,9 @@ export default function Hourly() {
         const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
         
         setHourlyArray(data.forecast.forecastday[0].hour)
+        setDate("Date :")
+        setRegion("Region :")
+        setCountry("Country :")
         
         setHourly({
             name: data.location.country,
@@ -36,22 +43,22 @@ export default function Hourly() {
 
     return (
         <div className='hourly'>
-            <br />
-            <form className='inputContainer'>
+            <h1>Hourly Forecast</h1>
+            <form className='hourlyInputContainer'>
                 <input
                 className='input'
                 type="text" 
                 value={inputValue}
-                placeholder='Search' 
+                placeholder='Search for location' 
                 onChange={(e)=> setInputValue(e.target.value)}  />
                 <button
                 className='inputBtn'
                 onClick={handleOnChange}>Search</button>
             </form>
             <div className='location'>
-                <h2>date : {hourly.date}</h2>
-                <h2>Region : {hourly.region} </h2>
-                <h2>Country : {hourly.country} </h2>
+                <h2>{date}{hourly.date}</h2>
+                <h2>{region}{hourly.region} </h2>
+                <h2>{country}{hourly.country} </h2>
         </div>
     <br />
         
@@ -77,31 +84,6 @@ export default function Hourly() {
             </div>
         )
     })}
-
-
-
-
-
-
-
-    {/* {hourlyArray?.map(result=>{
-        return(
-            <div className='weeklyContainer'>
-                <div className="weeklyHeader">
-                    <p>{result.time.slice(11)}</p>
-                    <p></p>
-                    <img src={result.condition.icon}
-                        alt=""
-                        style={{ width: 100, height: 100, backgroundColor: '#cde4ff' }} />
-                </div>
-                <div className='weeklyBody'>
-                    <p>Temperature : {result.temp_c} °c</p>
-                    <p>Chance of rain : {result.will_it_rain} %</p>
-                    <p>Precipitation : {result.precip_mm} mm</p>
-                </div>
-            </div>
-        )
-    })} */}
     </div>
     )
 }
