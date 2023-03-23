@@ -4,6 +4,7 @@ import Current from './pages/Current/Current';
 import NavBar from './components/NavBar';
 import WeeklyWeather from './pages/WeeklyWeather/WeeklyWeather';
 import Footer from './components/Footer';
+import Hourly from './pages/Hourly/Hourly';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/weeklyweather' element={<WeeklyWeather />} />
         <Route path='/current' element={<Current />} />
+        <Route path='/hourly' element={<Hourly />} />
       </Routes>
 
       <Footer />

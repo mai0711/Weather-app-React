@@ -29,7 +29,7 @@ export default function WeeklyWeather() {
   });
 }
 
-console.log(weeklyWeather)
+// console.log(weeklyWeather)
 
   const handleOnChange = (e)=>{
     e.preventDefault()
@@ -56,7 +56,6 @@ console.log(weeklyWeather)
         <h2>Region : {weeklyWeather.region} </h2>
         <h2>Country : {weeklyWeather.country} </h2>
       </div>
-      <br />
 
         {arrayData?.map(result=>{
           return(
@@ -67,13 +66,12 @@ console.log(weeklyWeather)
                   <Card.Img className="img" variant="top"
                   src={result.day.condition.icon}
                   style={{ width: 100, height: 100, backgroundColor: 'lightblue' }} />
-                  <Card.Title><span>{result.icon}</span></Card.Title>
-                    <Card.Body>
-                      <Card.Text className='text'><p>{result.day.condition.text}</p></Card.Text>
-                      <Card.Text className='text'><p>High : {result.day.maxtemp_c} °c</p></Card.Text>
-                      <Card.Text className='text'><p>Low : {result.day.mintemp_c} °c</p></Card.Text>
-                      <Card.Text className='text'><p>Chance of rain : {result.day.daily_chance_of_rain} %</p></Card.Text>
-                    </Card.Body>
+                  <Card.Body>
+                    <Card.Text className='text'><p>{result.day.condition.text}</p></Card.Text>
+                    <Card.Text className='text'><p>High : {result.day.maxtemp_c} °c</p></Card.Text>
+                    <Card.Text className='text'><p>Low : {result.day.mintemp_c} °c</p></Card.Text>
+                    <Card.Text className='text'><p>Chance of rain : {result.day.daily_chance_of_rain} %</p></Card.Text>
+                  </Card.Body>
                   </Card>
                 </Container>
             </div>
