@@ -2,12 +2,10 @@ import React from 'react'
 import './Hourly.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Container} from 'react-bootstrap';
 
 export default function Hourly() {
     const [hourly, setHourly] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const [addInputValue, setAddInputValue] = useState("");
     const [hourlyArray, setHourlyArray] = useState([]);
     const [date, setDate] = useState("");
     const [region, setRegion] = useState("");
@@ -15,7 +13,8 @@ export default function Hourly() {
 
     useEffect(()=>{
         getHourlyData();
-    },[addInputValue])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
     
     const getHourlyData = async ()=> {
         const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
@@ -29,18 +28,15 @@ export default function Hourly() {
             region: data.location.region,
             date: data.forecast.forecastday[0].date,
         });
+
+        setInputValue("")
     };
 
-    const handleOnChange = (e)=>{
-        e.preventDefault()
-        setAddInputValue(inputValue);
-        // setInputValue(""); 
-    }
 
     return (
         <div className='hourly'>
             <h1>Hourly Forecast</h1>
-            <form className='hourlyInputContainer'>
+            <div className='hourlyInputContainer'>
                 <input
                 className='input'
                 type="text" 
@@ -49,8 +45,8 @@ export default function Hourly() {
                 onChange={(e)=> setInputValue(e.target.value)} />
                 <button
                 className='inputBtn'
-                onClick={handleOnChange}>Search</button>
-            </form>
+                onClick={getHourlyData}>Search</button>
+            </div>
             <div className='location'>
                 <h2>{date}{hourly.date}</h2>
                 <h2>{region}{hourly.region}</h2>

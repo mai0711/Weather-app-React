@@ -3,20 +3,19 @@ import "./WeeklyWeather.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import {Container} from 'react-bootstrap';
 
 export default function WeeklyWeather() {
   const [weeklyWeather, setWeeklyWeather] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [addInputValue, setAddInputValue] = useState("");
   const [arrayData, setArrayData] = useState([]);
   const [region, setRegion] = useState("");
   const [country, setCountry] = useState("");
 
   useEffect(()=>{
     getWeeklyWeatherData();
-},[addInputValue])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+},[]);
 
   const getWeeklyWeatherData = async ()=> {
     const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=7&aqi=no&alerts=no`)
@@ -28,18 +27,16 @@ export default function WeeklyWeather() {
     country: data.location.country,
     region: data.location.region,
   });
+
+  setInputValue("")
+
 }
 
-  const handleOnChange = (e)=>{
-    e.preventDefault()
-    setAddInputValue(inputValue);
-    // setInputValue(""); 
-  }
 
   return (
     <div className='weeklyWeather'>
       <h1>7 Days Forecast</h1>
-      <form className='weeklyInputContainer'>
+      <div className='weeklyInputContainer'>
           <input
           className='input'
           type="text" 
@@ -48,8 +45,8 @@ export default function WeeklyWeather() {
           onChange={(e)=> setInputValue(e.target.value)} />
           <button
           className='inputBtn'
-          onClick={handleOnChange}>Search</button><br/>
-      </form>
+          onClick={getWeeklyWeatherData}>Search</button><br/>
+      </div>
       <div className='location'>
         <h2>{region}{weeklyWeather.region}</h2>
         <h2>{country}{weeklyWeather.country}</h2>
@@ -74,7 +71,9 @@ export default function WeeklyWeather() {
                 </Container>
             </div>
           )
-      })}
+        })}
     </div>
   )
 }
+
+

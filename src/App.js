@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/weeklyweather' element={<WeeklyWeather />} />
-        <Route path='/current' element={<Current />} />
+        <Route path='/' element={<Current />} />
         <Route path='/hourly' element={<Hourly />} />
       </Routes>
       <Footer />

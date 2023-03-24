@@ -9,9 +9,9 @@ export default function NavBar() {
     <div>
         <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/current">Weather Forecast</Navbar.Brand>
+          <Navbar.Brand href="/">Weather Forecast</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/current">Current</Nav.Link>
+            <Nav.Link href="/">Current</Nav.Link>
             <Nav.Link href="/hourly">Hourly</Nav.Link>
             <Nav.Link href="/weeklyweather">7 Days</Nav.Link>
           </Nav>
