@@ -1,3 +1,14 @@
+# Technology / Libraries
+HTML
+CSS
+React
+React-Bootstrap
+
+# References
+React-Bootstrap https://react-bootstrap.github.io/
+Weather API https://www.weatherapi.com/
+Unsplash https://unsplash.com/ja
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
