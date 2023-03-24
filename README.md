@@ -3,6 +3,8 @@ HTML
 
 CSS
 
+JavaScript
+
 React
 
 React-Bootstrap
