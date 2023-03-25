@@ -13,7 +13,7 @@ import Fog from "../../assets/fog.jpg"
 
 export default function Current() {
     const [weatherData, setWeatherData] = useState("");
-    const [inputValue, setInputValue] = useState("vancouver");
+    const [inputValue, setInputValue] = useState("");
     const [date, setDate] = useState("");
     const [location, setLocation] = useState("");
     const [region, setRegion] = useState("");
