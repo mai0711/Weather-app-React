@@ -11,6 +11,7 @@ export default function WeeklyWeather() {
   const [arrayData, setArrayData] = useState([]);
   const [region, setRegion] = useState("");
   const [country, setCountry] = useState("");
+  const [location, setLocation] = useState("");
 
   useEffect(()=>{
     getWeeklyWeatherData();
@@ -20,18 +21,18 @@ export default function WeeklyWeather() {
   const getWeeklyWeatherData = async ()=> {
     const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=7&aqi=no&alerts=no`)
     setArrayData(data.forecast.forecastday)
-    setRegion("Region :")
-    setCountry("Country :")
+    setRegion("Region : ")
+    setCountry("Country : ")
+    setLocation("Location : ")
     setWeeklyWeather({
-    name: data.location.country,
-    country: data.location.country,
+    name: data.location.name,
     region: data.location.region,
+    country: data.location.country,
   });
 
   setInputValue("")
 
 }
-
 
   return (
     <div className='weeklyWeather'>
@@ -48,6 +49,7 @@ export default function WeeklyWeather() {
           onClick={getWeeklyWeatherData}>Search</button><br/>
       </div>
       <div className='location'>
+        <h2>{location}{weeklyWeather.name}</h2>
         <h2>{region}{weeklyWeather.region}</h2>
         <h2>{country}{weeklyWeather.country}</h2>
       </div>

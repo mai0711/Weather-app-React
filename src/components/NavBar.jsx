@@ -11,7 +11,7 @@ export default function NavBar() {
         <Container>
           <Navbar.Brand href="/">Weather Forecast</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Current</Nav.Link>
+            <Nav.Link href="/">Today</Nav.Link>
             <Nav.Link href="/hourly">Hourly</Nav.Link>
             <Nav.Link href="/weeklyweather">7 Days</Nav.Link>
           </Nav>

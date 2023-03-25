@@ -10,6 +10,7 @@ export default function Hourly() {
     const [date, setDate] = useState("");
     const [region, setRegion] = useState("");
     const [country, setCountry] = useState("");
+    const [location, setLocation] = useState("");
 
     useEffect(()=>{
         getHourlyData();
@@ -19,11 +20,12 @@ export default function Hourly() {
     const getHourlyData = async ()=> {
         const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
         setHourlyArray(data.forecast.forecastday[0].hour)
-        setDate("Date :")
-        setRegion("Region :")
-        setCountry("Country :")
+        setDate("Date : ")
+        setRegion("Region : ")
+        setCountry("Country : ")
+        setLocation("Location : ")
         setHourly({
-            name: data.location.country,
+            name: data.location.name,
             country: data.location.country,
             region: data.location.region,
             date: data.forecast.forecastday[0].date,
@@ -47,8 +49,9 @@ export default function Hourly() {
                 className='inputBtn'
                 onClick={getHourlyData}>Search</button>
             </div>
+            <div className='date'> <h2>{date}{hourly.date}</h2></div>
             <div className='location'>
-                <h2>{date}{hourly.date}</h2>
+                <h2>{location}{hourly.name}</h2>
                 <h2>{region}{hourly.region}</h2>
                 <h2>{country}{hourly.country}</h2>
             </div>
