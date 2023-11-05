@@ -8,14 +8,16 @@ import Hourly from './pages/Hourly/Hourly';
 
 function App() {
   return (
-    <div className='App'>
-      <NavBar />
-      <Routes>
-        <Route path='/weeklyweather' element={<WeeklyWeather />} />
-        <Route path='/' element={<Current />} />
-        <Route path='/hourly' element={<Hourly />} />
-      </Routes>
-      <Footer />
+    <div>
+      <div className='App'>
+        <NavBar />
+        <Routes>
+          <Route path='/weeklyweather' element={<WeeklyWeather />} />
+          <Route path='/' element={<Current />} />
+          <Route path='/hourly' element={<Hourly />} />
+        </Routes>
+      </div>
+    <Footer className='footer' />
     </div>
   );
 }

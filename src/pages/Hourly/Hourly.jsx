@@ -18,7 +18,7 @@ export default function Hourly() {
     },[]);
     
     const getHourlyData = async ()=> {
-        const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
+        const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=8dbbc797da60478ea01213936230411&q=${inputValue}&days=1&aqi=no&alerts=no`)
         setHourlyArray(data.forecast.forecastday[0].hour)
         setDate("Date : ")
         setRegion("Region : ")
@@ -41,9 +41,9 @@ export default function Hourly() {
             <div className='hourlyInputContainer'>
                 <input
                 className='input'
-                type="text" 
+                type="text"
                 value={inputValue}
-                placeholder='Search for location' 
+                placeholder='Search for location'
                 onChange={(e)=> setInputValue(e.target.value)} />
                 <button
                 className='inputBtn'

@@ -30,7 +30,7 @@ export default function Current() {
     },[]);
 
     const getWeatherData = async ()=> {
-        const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=1&aqi=no&alerts=no`)
+        const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=8dbbc797da60478ea01213936230411&q=${inputValue}&days=1&aqi=no&alerts=no`)
         setDate("Date : ")
         setLocation("Location : ")
         setRegion("Region : ")
@@ -49,8 +49,8 @@ export default function Current() {
             low: data.forecast.forecastday[0].day.mintemp_c,
             condition: data.current.condition.text,
             date: data.forecast.forecastday[0].date,
-        }); 
-        
+        });
+
         setInputValue("")
     };
 

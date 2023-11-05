@@ -4,29 +4,33 @@
 # Weather-app
 <br>
 <br>
-
 ![image](image.jpg)
 
+## Today's weather
+![image](today.jpg)
+![image](today2.jpg)
+<br>
+<br>
+
+## Weekly forecast
+![image](weekly.jpg)
+<br>
+<br>
+
+## Hourly forecast
+![image](hourly.jpg)
+<br>
 <br>
 
 # DESCRIPTION
 ## ABOUT THE PROJECT
 Weather forecast app
-<br>
-<br>
-
-## OBJECT OF THE PROJECT
-
-<br>
-<br>
-
-## TARGET USERS
-
+In this app, you can check the today's weather, weekly forecast, and hourly weather updates. The background changes based on the weather conditions of the day.
 <br>
 <br>
 <br>
 
-# TECHNOLOGIES 
+# TECHNOLOGIES
 <br>
 ・ HTML<br>
 ・ CSS<br>

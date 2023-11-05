@@ -3,7 +3,8 @@
     background-image: url(../../assets/background.jpg);
     background-size: cover;
     background-position: center;
-    height: 100rem;
+    background-attachment: fixed;
+    min-height: 100vh;
     font-weight: bold;
 }
 
@@ -52,4 +53,17 @@
     padding: 0 50px;
     text-shadow: 10px 10px 10px orange;
 }
+
+@media screen and (max-width: 820px){
+    .weeklyWeather {
+
+    }
+}
+
+@media screen and (max-width:414px){
+    .weeklyWeather {
+       
+    }
+}
+
 

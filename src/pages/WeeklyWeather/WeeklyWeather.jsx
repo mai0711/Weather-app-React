@@ -19,7 +19,7 @@ export default function WeeklyWeather() {
 },[]);
 
   const getWeeklyWeatherData = async ()=> {
-    const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=0742e1cdce82430e90531909232103&q=${inputValue}&days=7&aqi=no&alerts=no`)
+    const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=8dbbc797da60478ea01213936230411&q=${inputValue}&days=7&aqi=no&alerts=no`)
     setArrayData(data.forecast.forecastday)
     setRegion("Region : ")
     setCountry("Country : ")
@@ -40,9 +40,9 @@ export default function WeeklyWeather() {
       <div className='weeklyInputContainer'>
           <input
           className='input'
-          type="text" 
+          type="text"
           value={inputValue}
-          placeholder='Search for location' 
+          placeholder='Search for location'
           onChange={(e)=> setInputValue(e.target.value)} />
           <button
           className='inputBtn'
@@ -58,7 +58,7 @@ export default function WeeklyWeather() {
           return(
             <div className="group">
               <Container className='cardContainer'>
-                <Card className='card'> 
+                <Card className='card'>
                   <Card.Title className='date'>{result.date}</Card.Title>
                   <Card.Img className="img" variant="top"
                   src={result.day.condition.icon}
